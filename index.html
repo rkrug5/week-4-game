@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>jQuery Jemshow!</title>
+
+<!-- <link rel="stylesheet"  href="assets/css/reset.css"/>
+<link rel="stylesheet"  href="assets/css/style.css"/> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<style>
+#instructions {
+	padding:10px;
+	border-width: 0px 0px 10px 0px;
+	border-color: red;
+	background-color: red;
+	color: white; 
+	margin-bottom: 30px;
+}
+
+#instructions2 {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+#gem1 {
+	background-image: url(assets/images/gem1.jpg);
+	height:150px;
+	background-size: 200px 150px;
+	background-repeat: no-repeat;
+}
+#gem2 {
+	background-image: url(assets/images/ruby.jpg);
+	height:150px;
+}
+#gem3 {
+	background-image: url(assets/images/gem3.jpg);
+	height:150px;
+}
+#gem4 {
+	background-image: url(assets/images/greengem.png);
+	height:150px;
+}
+
+#gemContainer {
+	margin-bottom: 30px;
+}
+
+
+</style>
+
+</head>
+<body>
+<div class="container">
+
+	<div class="jumbotron">
+      <h1 class="text-center">jQuery with Gems!</h1>
+      	<h4 class="text-center"></h4>
+  
+	</div>
+
+	<div class="row 1" id="instructions">
+		<p id="instructions2">Instructions: </p> <p>You will be given a random number at the start of the game.</p>
+		<p>There are four gems below. By clicking on a gem, you will add a specific amount of points to your Current Total.</p>
+		<p>You win the game by matching your Current Total to the Random Number.  You will lose if you go over the given amount.</p>
+		<p>The value of each crystal is hidden from you until you click on it.</p>
+
+	</div>
+
+	<div class="row">
+		
+		<div class="col-sm-6">
+				<div class="panel panel-default">
+          <div class="panel-heading">
+            <h5 class="panel-title">Target Number:</h5>
+          </div>
+          <div class="panel-body">
+            <div class="text-center">
+           <h3 id="targetNumber"></h3>
+            </div>
+          </div>
+        </div>
+
+
+
+		</div>
+
+		<div class="col-sm-6">
+
+			<div class="panel panel-default">
+          		<div class="panel-heading">
+           			<h5 class="panel-title">Current Total:</h5>
+          		</div>
+          		<div class="panel-body">
+            		<div class="text-center">
+           				<h3 id="currentNumberSpot"></h3>
+            		</div>
+          		</div>
+        	</div>
+		</div>
+
+
+<!-- crystals! -->
+
+	<div class="row 3" id="gemContainer">
+
+		<div class="col-sm-3" id="gem1">
+			<p>a</p>
+		</div>
+
+		<div class="col-sm-3" id="gem2">
+			<p>b</p>
+		</div>
+
+		<div class="col-sm-3" id="gem3">
+			<p>c</p>
+		</div>
+
+		<div class="col-sm-3" id="gem4">
+			<p>d</p>
+		</div>
+
+
+	</div>
+
+	<div class="row 4" id="buttonsAndSuch">
+
+		<div class="col-sm-4" id="wins">
+			<div class="panel panel-default">
+          		<div class="panel-heading">
+           			<h5 class="panel-title"><p id="winCounter2"></p></h5>
+          		</div>
+          <!-- 		<div class="panel-body">
+            		<div class="text-center">
+           				<h3 id="winCounter"></h3>
+            		</div>
+          		</div> -->
+        	</div>
+		</div>
+
+		<div class="col-sm-4" id="losses">
+			<div class="panel panel-default">
+          		<div class="panel-heading">
+           			<h5 class="panel-title"><p id="lossCounter"></p></h5>
+          		</div>
+          		<!-- <div class="panel-body">
+            		<div class="text-center">
+           				<h3 id="lossCounter"></h3>
+            		</div>
+          		</div> -->
+        	</div>
+		</div>
+
+		
+         <button type="button" class="btn-lg btn-primary" id="resetButton">Play Again</button>
+            		
+
+
+
+
+
+
+
+<script>
+
+
+var currentNumber = 0;
+var randomNumber = 0;
+var winCounter = 0;
+var lossCounter = 0;
+
+
+
+$(document).ready(function() {
+
+
+
+
+$("#gem1").on("click", function() {
+        
+        currentNumber += 20;
+        document.getElementById('currentNumberSpot').innerHTML = currentNumber;
+        checkWinCondition();
+    });
+$("#gem2").on("click", function() {
+        
+        currentNumber += 10;
+        document.getElementById('currentNumberSpot').innerHTML = currentNumber;
+        checkWinCondition();
+    });
+$("#gem3").on("click", function() {
+        
+        currentNumber += 5;
+        document.getElementById('currentNumberSpot').innerHTML = currentNumber;
+        checkWinCondition();
+    });
+$("#gem4").on("click", function() {
+        
+        currentNumber += 1;
+        document.getElementById('currentNumberSpot').innerHTML = currentNumber;
+        checkWinCondition();
+
+		// if (randomNumber == currentNumber) {
+
+		// 	alert("You Win!");
+		// 	winCounter++;
+
+		// 	}
+	});
+
+randomNumber = Math.floor(Math.random()*100+1);
+console.log(randomNumber);
+
+document.getElementById('currentNumberSpot').innerHTML = currentNumber;
+document.getElementById('targetNumber').innerHTML = randomNumber;
+document.getElementById('lossCounter').innerHTML = "Losses: " +lossCounter;
+document.getElementById('winCounter2').innerHTML = "Wins: " + winCounter;
+
+
+function checkWinCondition () {
+	if (randomNumber == currentNumber) {
+
+		alert("You Win!");
+		winCounter++;
+		document.getElementById('winCounter2').innerHTML = "Wins: " + winCounter;
+	}
+
+	if (currentNumber > randomNumber) {
+		alert("You Lost!");
+		lossCounter++;
+		document.getElementById('lossCounter').innerHTML = "Losses: " + lossCounter;
+	}
+}
+
+// function reset() {
+// 	currentNumber = 0;
+// 	randomNumber = Math.floor(Math.random()*100+1);
+
+// }
+
+  $("#resetButton").on("click", function() {
+      	currentNumber = 0;
+      	randomNumber = Math.floor(Math.random()*100+1);
+     	document.getElementById('currentNumberSpot').innerHTML = currentNumber;
+		document.getElementById('targetNumber').innerHTML = randomNumber;
+		document.getElementById('lossCounter').innerHTML = "Losses: " + lossCounter;
+		document.getElementById('winCounter2').innerHTML = "Wins: " + winCounter;
+      
+  });
+
+        
+        
+
+
+});
+</script>
+
+
+</div>
+</body>
+</html>
