@@ -1,0 +1,42 @@
+#instructions {
+	padding:10px;
+	border-width: 0px 0px 10px 0px;
+	border-color: red;
+	background-color: rgb(117, 11, 11);
+	color: white; 
+	margin-bottom: 30px;
+}
+
+#instructions2 {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+#gem1 {
+	background-image: url(../images/gem1.jpg);
+	height:150px;
+	background-size: 200px 150px;
+	background-repeat: no-repeat;
+}
+#gem2 {
+	background-image: url(../images/ruby.jpg);
+	height:150px;
+}
+#gem3 {
+	background-image: url(../images/gem3.jpg);
+	height:150px;
+}
+#gem4 {
+	background-image: url(../images/greengem.png);
+	height:150px;
+}
+
+#gemContainer {
+	margin-bottom: 30px;
+}
+
+.jumbotron {
+font-size: 40px;
+font-weight: bold;
+background-image: url("../images/newgems.jpg");
+}

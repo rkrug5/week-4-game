@@ -3,52 +3,14 @@
 <head>
 <title>jQuery Jemshow!</title>
 
-<!-- <link rel="stylesheet"  href="assets/css/reset.css"/>
-<link rel="stylesheet"  href="assets/css/style.css"/> -->
+
+
+<link rel="stylesheet"  href="assets/css/reset.css"/>
+<link rel="stylesheet"  href="assets/css/style.css"/>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<style>
-#instructions {
-	padding:10px;
-	border-width: 0px 0px 10px 0px;
-	border-color: red;
-	background-color: red;
-	color: white; 
-	margin-bottom: 30px;
-}
-
-#instructions2 {
-	font-size: 24px;
-	font-weight: bold;
-}
-
-#gem1 {
-	background-image: url(assets/images/gem1.jpg);
-	height:150px;
-	background-size: 200px 150px;
-	background-repeat: no-repeat;
-}
-#gem2 {
-	background-image: url(assets/images/ruby.jpg);
-	height:150px;
-}
-#gem3 {
-	background-image: url(assets/images/gem3.jpg);
-	height:150px;
-}
-#gem4 {
-	background-image: url(assets/images/greengem.png);
-	height:150px;
-}
-
-#gemContainer {
-	margin-bottom: 30px;
-}
-
-
-</style>
 
 </head>
 <body>
@@ -101,7 +63,7 @@
 		</div>
 
 
-<!-- crystals! -->
+<!-- gems! -->
 
 	<div class="row 3" id="gemContainer">
 
@@ -123,11 +85,6 @@
           		<div class="panel-heading">
            			<h5 class="panel-title"><p id="winCounter"></p></h5>
           		</div>
-          <!-- 		<div class="panel-body">
-            		<div class="text-center">
-           				<h3 id="winCounter"></h3>
-            		</div>
-          		</div> -->
         	</div>
 		</div>
 
@@ -136,11 +93,6 @@
           		<div class="panel-heading">
            			<h5 class="panel-title"><p id="lossCounter"></p></h5>
           		</div>
-          		<!-- <div class="panel-body">
-            		<div class="text-center">
-           				<h3 id="lossCounter"></h3>
-            		</div>
-          		</div> -->
         	</div>
 		</div>
 
@@ -154,88 +106,7 @@
 
 
 
-<script>
-
-
-var currentNumber = 0;
-var randomNumber = 0;
-var winCounter = 0;
-var lossCounter = 0;
-
-
-
-$(document).ready(function() {
-
-
-
-
-$("#gem1").on("click", function() {
-        
-        currentNumber += 20;
-        document.getElementById('currentNumberSpot').innerHTML = currentNumber;
-        checkWinCondition();
-    });
-$("#gem2").on("click", function() {
-        
-        currentNumber += 10;
-        document.getElementById('currentNumberSpot').innerHTML = currentNumber;
-        checkWinCondition();
-    });
-$("#gem3").on("click", function() {
-        
-        currentNumber += 5;
-        document.getElementById('currentNumberSpot').innerHTML = currentNumber;
-        checkWinCondition();
-    });
-$("#gem4").on("click", function() {
-        
-        currentNumber += 1;
-        document.getElementById('currentNumberSpot').innerHTML = currentNumber;
-        checkWinCondition();
-
-	
-	});
-
-randomNumber = Math.floor(Math.random()*100+1);
-console.log(randomNumber);
-
-document.getElementById('currentNumberSpot').innerHTML = currentNumber;
-document.getElementById('targetNumber').innerHTML = randomNumber;
-document.getElementById('lossCounter').innerHTML = "Losses: " +lossCounter;
-document.getElementById('winCounter').innerHTML = "Wins: " + winCounter;
-
-
-function checkWinCondition () {
-	if (randomNumber == currentNumber) {
-
-		alert("You Win!");
-		winCounter++;
-		document.getElementById('winCounter').innerHTML = "Wins: " + winCounter;
-	}
-
-	if (currentNumber > randomNumber) {
-		alert("You Lost!");
-		lossCounter++;
-		document.getElementById('lossCounter').innerHTML = "Losses: " + lossCounter;
-	}
-}
-
-
-  $("#resetButton").on("click", function() {
-      	currentNumber = 0;
-      	randomNumber = Math.floor(Math.random()*100+1);
-     	document.getElementById('currentNumberSpot').innerHTML = currentNumber;
-		document.getElementById('targetNumber').innerHTML = randomNumber;
-		document.getElementById('lossCounter').innerHTML = "Losses: " + lossCounter;
-		document.getElementById('winCounter2').innerHTML = "Wins: " + winCounter;
-      
-  });
-
-        
-        
-
-
-});
+<script type="text/javascript" src="assets/javascript/app.js">
 </script>
 
 
